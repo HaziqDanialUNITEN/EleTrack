@@ -113,6 +113,9 @@
             <VerticalStackLayout Spacing="10" Margin="0,0,0,20">
                 <Label Text="Contact &amp; Support" FontSize="16" FontAttributes="Bold" TextColor="#1E293B" />
                 <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="15">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnEmailTapped" />
+                    </Border.GestureRecognizers>
                     <HorizontalStackLayout Spacing="10">
                         <Image Source="email_icon.png" WidthRequest="18" HeightRequest="18" VerticalOptions="Center"/>
                         <Label Text="support@eletrack.app" FontSize="14" TextColor="#1E293B" VerticalOptions="Center"/>

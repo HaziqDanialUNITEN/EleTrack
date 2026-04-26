@@ -9,100 +9,70 @@
 
             <!-- Header Section -->
             <VerticalStackLayout>
-                <Label Text="Settings" 
-                       FontSize="26" 
-                       FontAttributes="Bold" 
-                       TextColor="#1E293B" />
-                <Label Text="Manage housemates and preferences" 
-                       FontSize="14" 
-                       TextColor="#64748B" />
+                <Label Text="Settings" FontSize="26" FontAttributes="Bold" TextColor="#1E293B" />
+                <Label Text="Manage housemates and preferences" FontSize="14" TextColor="#64748B" />
             </VerticalStackLayout>
 
             <!-- Housemates Header & Add Button -->
             <Grid ColumnDefinitions="*, Auto" Margin="0,10,0,0">
                 <Label Grid.Column="0" Text="Housemates" FontSize="18" FontAttributes="Bold" TextColor="#1E293B" VerticalOptions="Center"/>
-                <Button Grid.Column="1" 
-                        Text="Add" 
-                        ImageSource="add_user_icon_white.png" 
-                        ContentLayout="Left, 5"
+
+                <!-- Fixed Custom Add Button -->
+                <Border Grid.Column="1" 
                         BackgroundColor="#0AA67A" 
-                        TextColor="White" 
-                        FontAttributes="Bold" 
-                        CornerRadius="8" 
+                        StrokeThickness="0" 
+                        StrokeShape="RoundRectangle 8" 
                         HeightRequest="36" 
-                        Padding="12,0"/>
+                        Padding="12,0"
+                        VerticalOptions="Center">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnAddHousemateTapped" />
+                    </Border.GestureRecognizers>
+                    <HorizontalStackLayout Spacing="6" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image Source="add_user_icon_white.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center"/>
+                        <Label Text="Add" TextColor="White" FontAttributes="Bold" FontSize="14" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                </Border>
             </Grid>
 
-            <!-- Housemates List -->
-            <VerticalStackLayout Spacing="10">
+            <!-- Dynamic Housemates List connected to Firebase -->
+            <CollectionView x:Name="HousematesCollection">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <!-- Notice the Margin="0,0,0,10" to space out the dynamic items -->
+                        <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="15" Margin="0,0,0,10">
+                            <Grid ColumnDefinitions="*, Auto, Auto">
+                                <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                                    <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" TextColor="#1E293B" />
+                                    <Label Text="{Binding Modifier, StringFormat='Modifier: {0}×'}" FontSize="13" TextColor="#64748B" />
+                                </VerticalStackLayout>
 
-                <!-- Housemate 1 -->
-                <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="15">
-                    <Grid ColumnDefinitions="*, Auto, Auto">
-                        <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
-                            <Label Text="Ahmad" FontSize="16" FontAttributes="Bold" TextColor="#1E293B" />
-                            <Label Text="Modifier: 1×" FontSize="13" TextColor="#64748B" />
-                        </VerticalStackLayout>
-                        <Image Grid.Column="1" Source="edit_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center" Margin="0,0,15,0"/>
-                        <Image Grid.Column="2" Source="delete_icon_red.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
-                    </Grid>
-                </Border>
+                                <Image Grid.Column="1" Source="edit_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center" Margin="0,0,15,0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnEditHousemateTapped" CommandParameter="{Binding .}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
 
-                <!-- Housemate 2 -->
-                <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="15">
-                    <Grid ColumnDefinitions="*, Auto, Auto">
-                        <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
-                            <Label Text="Sarah" FontSize="16" FontAttributes="Bold" TextColor="#1E293B" />
-                            <Label Text="Modifier: 0.8×" FontSize="13" TextColor="#64748B" />
-                        </VerticalStackLayout>
-                        <Image Grid.Column="1" Source="edit_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center" Margin="0,0,15,0"/>
-                        <Image Grid.Column="2" Source="delete_icon_red.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
-                    </Grid>
-                </Border>
-
-                <!-- Housemate 3 -->
-                <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="15">
-                    <Grid ColumnDefinitions="*, Auto, Auto">
-                        <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
-                            <Label Text="Wei Ming" FontSize="16" FontAttributes="Bold" TextColor="#1E293B" />
-                            <Label Text="Modifier: 1.5×" FontSize="13" TextColor="#64748B" />
-                        </VerticalStackLayout>
-                        <Image Grid.Column="1" Source="edit_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center" Margin="0,0,15,0"/>
-                        <Image Grid.Column="2" Source="delete_icon_red.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
-                    </Grid>
-                </Border>
-
-                <!-- Housemate 4 -->
-                <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="15">
-                    <Grid ColumnDefinitions="*, Auto, Auto">
-                        <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
-                            <Label Text="Priya" FontSize="16" FontAttributes="Bold" TextColor="#1E293B" />
-                            <Label Text="Modifier: 1×" FontSize="13" TextColor="#64748B" />
-                        </VerticalStackLayout>
-                        <Image Grid.Column="1" Source="edit_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center" Margin="0,0,15,0"/>
-                        <Image Grid.Column="2" Source="delete_icon_red.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
-                    </Grid>
-                </Border>
-
-            </VerticalStackLayout>
+                                <Image Grid.Column="2" Source="delete_icon_red.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnDeleteHousemateTapped" CommandParameter="{Binding .}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
             <!-- Usage Modifiers Info Card -->
-            <Border BackgroundColor="#EFF6FF" 
-                    Stroke="#BFDBFE"
-                    StrokeThickness="1" 
-                    StrokeShape="RoundRectangle 12"
-                    Padding="20"
-                    Margin="0,10,0,0">
+            <Border BackgroundColor="#EFF6FF" Stroke="#BFDBFE" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="20" Margin="0,10,0,0">
                 <VerticalStackLayout Spacing="10">
                     <HorizontalStackLayout Spacing="8">
                         <Image Source="info_icon_blue.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
                         <Label Text="Usage Modifiers" FontSize="16" FontAttributes="Bold" TextColor="#1E3A8A" VerticalOptions="Center"/>
                     </HorizontalStackLayout>
 
-                    <Label Text="Modifiers adjust each person's share based on their electricity usage habits:" 
-                           FontSize="13" 
-                           TextColor="#1D4ED8" 
-                           LineBreakMode="WordWrap"/>
+                    <Label Text="Modifiers adjust each person's share based on their electricity usage habits:" FontSize="13" TextColor="#1D4ED8" LineBreakMode="WordWrap"/>
 
                     <VerticalStackLayout Spacing="4" Margin="10,5,0,0">
                         <Label Text="• 1.0 = Standard usage" FontSize="13" TextColor="#1D4ED8"/>
@@ -112,13 +82,8 @@
                 </VerticalStackLayout>
             </Border>
 
-            <!-- About EleTrack Button/Card -->
-            <Border BackgroundColor="White" 
-                    Stroke="#E2E8F0"
-                    StrokeThickness="1" 
-                    StrokeShape="RoundRectangle 12"
-                    Padding="20"
-                    Margin="0,10,0,20">
+            <!-- About EleTrack Button -->
+            <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="20" Margin="0,10,0,20">
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnAboutTapped" />
                 </Border.GestureRecognizers>

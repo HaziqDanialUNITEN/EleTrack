@@ -1,36 +1,100 @@
 using System.IO;
+using EleTrack.Services;
 
 namespace EleTrack;
 
 public partial class SplitPage : ContentPage
 {
+    private readonly FirebaseService _firebaseService;
+
     public SplitPage()
     {
         InitializeComponent();
-
-        // Hide the default top navigation bar for a cleaner look
         Shell.SetNavBarIsVisible(this, false);
+        _firebaseService = new FirebaseService();
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await LoadSplitData();
+    }
+
+    private async Task LoadSplitData()
+    {
+        try
+        {
+            var bill = await _firebaseService.GetCurrentBillAsync();
+            var housemates = await _firebaseService.GetHousematesAsync();
+
+            if (housemates == null || housemates.Count == 0) return;
+
+            // 1. Calculate the base mathematical values
+            double totalModifiers = housemates.Sum(h => h.Modifier);
+            double baseShare = (bill?.TotalConsumed ?? 0) / (totalModifiers > 0 ? totalModifiers : 1);
+
+            int paidCount = 0;
+            double totalPaid = 0;
+
+            // 2. Assign dynamic amounts to each housemate
+            foreach (var mate in housemates)
+            {
+                mate.AmountDue = baseShare * mate.Modifier;
+
+                if (mate.Status == "Paid")
+                {
+                    paidCount++;
+                    totalPaid += mate.AmountDue;
+                }
+            }
+
+            // 3. Update the UI on the Main Thread
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                TotalBillLabel.Text = $"RM {bill?.TotalConsumed ?? 0:F2}";
+                SplitAmongLabel.Text = $"Split among {housemates.Count} housemates";
+
+                PaymentProgressTextLabel.Text = $"RM {totalPaid:F2} / RM {bill?.TotalConsumed ?? 0:F2}";
+                PaidCountLabel.Text = $"{paidCount} of {housemates.Count} paid";
+
+                if (bill != null && bill.TotalConsumed > 0)
+                {
+                    PaymentProgressBar.Progress = totalPaid / bill.TotalConsumed;
+                }
+                else
+                {
+                    PaymentProgressBar.Progress = 0;
+                }
+
+                // Bind the list to the VerticalStackLayout using BindableLayout
+                BindableLayout.SetItemsSource(SplitCollection, housemates);
+            });
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading split data: {ex.Message}");
+        }
     }
 
     private async void OnShareBillSummaryClicked(object sender, EventArgs e)
     {
         try
         {
-            if (Screenshot.Default.IsCaptureSupported)
+            // Briefly hide the Share button so it isn't included in the final screenshot
+            ShareButton.IsVisible = false;
+
+            // Wait a tiny bit for the UI layout to update and hide the button
+            await Task.Delay(100);
+
+            // Capture the specific layout container (MainContent) instead of the entire screen
+            // This captures the full scrollable height and naturally ignores the Navigation/Tab bars!
+            IScreenshotResult screenshot = await MainContent.CaptureAsync();
+
+            // Bring the button back immediately
+            ShareButton.IsVisible = true;
+
+            if (screenshot != null)
             {
-                // 1. Temporarily hide the bottom TabBar to exclude it from the screenshot
-                Shell.SetTabBarIsVisible(this, false);
-
-                // Wait a tiny bit for the UI layout to update and actually hide the bar
-                await Task.Delay(100);
-
-                // 2. Capture the screen
-                IScreenshotResult screenshot = await Screenshot.Default.CaptureAsync();
-
-                // 3. Bring the bottom TabBar back immediately after capture
-                Shell.SetTabBarIsVisible(this, true);
-
-                // 4. Save screenshot to a temporary file
                 string cacheDir = FileSystem.CacheDirectory;
                 string filePath = Path.Combine(cacheDir, "BillSummary.png");
 
@@ -40,23 +104,20 @@ public partial class SplitPage : ContentPage
                     await stream.CopyToAsync(fileStream);
                 }
 
-                // 5. Open the native OS Share dialog (WhatsApp, Telegram, etc.)
                 await Share.Default.RequestAsync(new ShareFileRequest
                 {
                     Title = "Share Bill Summary",
                     File = new ShareFile(filePath)
                 });
             }
-            else
-            {
-                await DisplayAlert("Error", "Screenshot capture is not supported on this device.", "OK");
-            }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            // Restore TabBar just in case an error occurs during capture
-            Shell.SetTabBarIsVisible(this, true);
-            await DisplayAlert("Error", $"Failed to share bill summary: {ex.Message}", "OK");
+            // Restore button just in case an error occurs
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                ShareButton.IsVisible = true;
+            });
         }
     }
 }
