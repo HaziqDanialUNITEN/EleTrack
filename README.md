@@ -1,5 +1,13 @@
 # ⚡ EleTrack - Household Electricity Tracker
+## 📱 App Preview
 
+<p align="center">
+  <img src="screenshots/Screenshot_MAINPAGE.png" width="180"/>
+  <img src="screenshots/Screenshot_ANALYTICSPAGE.png" width="180"/>
+  <img src="screenshots/Screenshot_READINGSPAGE.png" width="180"/>
+  <img src="screenshots/Screenshot_SPLITSPAGE.png" width="180"/>
+  <img src="screenshots/Screenshot_SETTINGSPAGE.png" width="180"/>
+</p>
 EleTrack is a cross-platform mobile application designed to help university students track their shared electricity usage and fairly split bills among housemates. Built as a UNITEN case study, this app eliminates manual calculations, prevents disputes over utility costs, and promotes energy-conscious habits. 
 
 ## 🎯 The Problem
