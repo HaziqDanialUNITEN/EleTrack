@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EleTrack.MainPage"
+             BackgroundColor="#FAFAFA">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Header Section -->
+            <HorizontalStackLayout Spacing="15" Margin="0,10,0,10">
+                <Image Source="eletrackicon.png" 
+                       WidthRequest="45" 
+                       HeightRequest="45" 
+                       VerticalOptions="Center" />
+                <VerticalStackLayout VerticalOptions="Center">
+                    <Label Text="EleTrack" 
+                           FontSize="24" 
+                           FontAttributes="Bold" 
+                           TextColor="#1E293B" />
+                    <Label Text="Electricity Monitor" 
+                           FontSize="14" 
+                           TextColor="#64748B" />
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+
+            <!-- Current Credit Card -->
+            <Border BackgroundColor="#0AA67A" 
+                    StrokeThickness="0" 
+                    StrokeShape="RoundRectangle 16"
+                    Padding="20">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,4" Radius="10" Opacity="0.1" />
+                </Border.Shadow>
+                <VerticalStackLayout Spacing="15">
+                    <HorizontalStackLayout Spacing="10">
+                        <Image Source="lightningicon.png" WidthRequest="20" HeightRequest="20"/>
+                        <Label Text="Current Electricity Credit" TextColor="White" FontSize="16" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+
+                    <Label Text="RM 45.80" 
+                           TextColor="White" 
+                           FontSize="42" 
+                           FontAttributes="Bold" />
+
+                    <HorizontalStackLayout Spacing="8">
+                        <Image Source="calendar_icon.png" WidthRequest="14" HeightRequest="14"/>
+                        <Label Text="Last updated: March 5, 2026" TextColor="#E2E8F0" FontSize="12" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Usage Since Last Reading Card -->
+            <Border BackgroundColor="White" 
+                    Stroke="#F1F5F9"
+                    StrokeThickness="1" 
+                    StrokeShape="RoundRectangle 16"
+                    Padding="20">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,4" Radius="10" Opacity="0.03" />
+                </Border.Shadow>
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Usage Since Last Reading" FontSize="16" TextColor="#334155" />
+
+                    <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, Auto">
+                        <VerticalStackLayout Grid.Row="0" Grid.Column="0">
+                            <Label Text="Total Consumed" FontSize="12" TextColor="#94A3B8" />
+                            <Label Text="RM 54.20" FontSize="28" FontAttributes="Bold" TextColor="#1E293B" />
+                        </VerticalStackLayout>
+
+                        <HorizontalStackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="End" Spacing="4">
+                            <Image Source="analyticsicon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center"/>
+                            <Label Text="54.2%" TextColor="#E11D48" FontSize="14" FontAttributes="Bold" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                    </Grid>
+
+                    <!-- Progress Bar Layout -->
+                    <VerticalStackLayout Spacing="8" Margin="0,10,0,0">
+                        <ProgressBar Progress="0.542" ProgressColor="#0F172A" HeightRequest="10" />
+                        <Grid ColumnDefinitions="*, *">
+                            <Label Grid.Column="0" Text="Started: RM 100.00" FontSize="12" TextColor="#64748B" HorizontalOptions="Start"/>
+                            <Label Grid.Column="1" Text="Remaining: RM 45.80" FontSize="12" TextColor="#64748B" HorizontalOptions="End"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Grid for Daily Average & Days Tracked -->
+            <Grid ColumnDefinitions="*, *" ColumnSpacing="15">
+
+                <!-- Daily Average -->
+                <Border Grid.Column="0" 
+                        BackgroundColor="White" 
+                        Stroke="#F1F5F9"
+                        StrokeThickness="1" 
+                        StrokeShape="RoundRectangle 16"
+                        Padding="20">
+                    <Border.Shadow>
+                        <Shadow Brush="Black" Offset="0,2" Radius="8" Opacity="0.03" />
+                    </Border.Shadow>
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="10">
+                        <Border BackgroundColor="#EFF6FF" WidthRequest="45" HeightRequest="45" StrokeThickness="0" StrokeShape="RoundRectangle 22.5">
+                            <Image Source="chart_down_blue.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </Border>
+                        <Label Text="Daily Average" FontSize="13" TextColor="#64748B" HorizontalOptions="Center"/>
+                        <Label Text="RM 2.15" FontSize="22" FontAttributes="Bold" TextColor="#1E293B" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Days Tracked -->
+                <Border Grid.Column="1" 
+                        BackgroundColor="White" 
+                        Stroke="#F1F5F9"
+                        StrokeThickness="1" 
+                        StrokeShape="RoundRectangle 16"
+                        Padding="20">
+                    <Border.Shadow>
+                        <Shadow Brush="Black" Offset="0,2" Radius="8" Opacity="0.03" />
+                    </Border.Shadow>
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="10">
+                        <Border BackgroundColor="#FAF5FF" WidthRequest="45" HeightRequest="45" StrokeThickness="0" StrokeShape="RoundRectangle 22.5">
+                            <Image Source="calendar_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </Border>
+                        <Label Text="Days Tracked" FontSize="13" TextColor="#64748B" HorizontalOptions="Center"/>
+                        <Label Text="25" FontSize="22" FontAttributes="Bold" TextColor="#1E293B" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Border>
+
+            </Grid>
+
+            <!-- Energy Saving Tip -->
+            <Border BackgroundColor="#F0F8FF" 
+                    Stroke="#BFDBFE"
+                    StrokeThickness="1" 
+                    StrokeShape="RoundRectangle 12"
+                    Padding="20">
+                <HorizontalStackLayout Spacing="15">
+                    <Border BackgroundColor="#2563EB" WidthRequest="36" HeightRequest="36" StrokeThickness="0" StrokeShape="RoundRectangle 18" VerticalOptions="Start">
+                        <Image Source="electricsymbolone.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Border>
+                    <VerticalStackLayout Spacing="5" WidthRequest="250">
+                        <Label Text="Energy Saving Tip" FontSize="16" FontAttributes="Bold" TextColor="#1E3A8A" />
+                        <Label Text="Turn off air conditioning when you leave your room. It can save up to RM 5-10 per day!" FontSize="13" TextColor="#1D4ED8" LineBreakMode="WordWrap"/>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

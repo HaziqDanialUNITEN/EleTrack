@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="EleTrack.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:EleTrack"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.TabBarTitleColor="#0fa978"
+    Shell.TabBarUnselectedColor="#999999"
+    Title="EleTrack">
+
+    <!-- Bottom Navigation Bar -->
+    <TabBar>
+        <!-- Tab 1: Home -->
+        <Tab Title="Home" Icon="homeicon.png">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+
+        <!-- Tab 2: Analytics  -->
+        <Tab Title="Analytics" Icon="analyticsicon2.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AnalyticsPage}" />
+        </Tab>
+
+        <!-- Tab 3: Reading -->
+        <Tab Title="Reading" Icon="readingsicon.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ReadingsPage}" />
+        </Tab>
+
+        <!-- Tab 4: Split -->
+        <Tab Title="Split" Icon="moneyicon.png">
+            <ShellContent ContentTemplate="{DataTemplate local:SplitPage}" />
+        </Tab>
+
+        <!-- Tab 5: Settings -->
+        <Tab Title="Settings" Icon="settingsicon.png">
+            <ShellContent ContentTemplate="{DataTemplate local:SettingsPage}" />
+        </Tab>
+    </TabBar>
+
+</Shell>

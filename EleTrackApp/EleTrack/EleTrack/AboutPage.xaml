@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EleTrack.AboutPage"
+             BackgroundColor="#FAFAFA">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Custom Back Button & Header -->
+            <Grid ColumnDefinitions="Auto, *" Margin="0,0,0,10">
+                <Image Grid.Column="0" Source="back_arrow_icon.png" WidthRequest="24" HeightRequest="24" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBackTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Grid.Column="1" Text="About" FontSize="22" FontAttributes="Bold" TextColor="#1E293B" VerticalOptions="Center" Margin="15,0,0,0"/>
+            </Grid>
+
+            <!-- App Logo & Version Card -->
+            <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="30">
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="8">
+                    <!-- The app icon with the blue background -->
+                    <Border BackgroundColor="#FFFFFF" WidthRequest="80" HeightRequest="80" StrokeThickness="0" StrokeShape="RoundRectangle 20" HorizontalOptions="Center" Margin="0,0,0,10">
+                        <Image Source="eletrackicon.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Border>
+
+                    <Label Text="EleTrack" FontSize="24" FontAttributes="Bold" TextColor="#1E293B" HorizontalOptions="Center"/>
+                    <Label Text="Electricity Bill Tracker" FontSize="14" TextColor="#64748B" HorizontalOptions="Center"/>
+                    <Label Text="Version 1.0.0" FontSize="12" TextColor="#94A3B8" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- What is EleTrack Card -->
+            <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="20">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="What is EleTrack?" FontSize="16" FontAttributes="Bold" TextColor="#1E293B" />
+                    <Label Text="EleTrack helps university students and housemates living in shared accommodation track their electricity usage and split bills fairly. Monitor your meter readings, analyze consumption patterns, and ensure everyone pays their fair share based on actual usage." 
+                           FontSize="14" 
+                           TextColor="#475569" 
+                           LineHeight="1.4"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Key Features Card -->
+            <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="20">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Key Features" FontSize="16" FontAttributes="Bold" TextColor="#1E293B" Margin="0,0,0,5"/>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Image Source="green_dot_icon.png" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
+                        <Label Text="Track electricity credit in real-time" FontSize="14" TextColor="#475569" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Image Source="green_dot_icon.png" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
+                        <Label Text="Log meter readings with photo evidence" FontSize="14" TextColor="#475569" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Image Source="green_dot_icon.png" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
+                        <Label Text="Visualize usage with interactive charts" FontSize="14" TextColor="#475569" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Image Source="green_dot_icon.png" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
+                        <Label Text="Fair bill splitting with usage modifiers" FontSize="14" TextColor="#475569" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Image Source="green_dot_icon.png" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
+                        <Label Text="Monitor daily and weekly consumption" FontSize="14" TextColor="#475569" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Image Source="green_dot_icon.png" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
+                        <Label Text="Share bill summaries with housemates" FontSize="14" TextColor="#475569" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Developer Card -->
+            <Border BackgroundColor="#F8FAFC" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="20">
+                <VerticalStackLayout Spacing="15">
+                    <HorizontalStackLayout Spacing="8">
+                        <Image Source="code_icon_purple.png" WidthRequest="18" HeightRequest="18" VerticalOptions="Center"/>
+                        <Label Text="Developer" FontSize="16" FontAttributes="Bold" TextColor="#1E293B" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+
+                    <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="15">
+                        <VerticalStackLayout>
+                            <Label Text="Haziq Danial Bin Mohd 'Azmi" FontSize="15" FontAttributes="Bold" TextColor="#1E293B" />
+                            <Label Text="Student ID: BSW01084606" FontSize="13" TextColor="#64748B" />
+                            <Label Text="UNITEN" FontSize="13" TextColor="#64748B" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <VerticalStackLayout Spacing="5">
+                        <HorizontalStackLayout Spacing="5">
+                            <Label Text="Developed with" FontSize="13" TextColor="#334155" VerticalOptions="Center"/>
+                            <Label Text="❤️" FontSize="13" VerticalOptions="Center"/>
+                            <Label Text="for students by students" FontSize="13" TextColor="#334155" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <Label Text="Built as a prototype to help university students manage shared living expenses more effectively." 
+                               FontSize="12" 
+                               TextColor="#64748B" 
+                               LineHeight="1.4"/>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Contact & Support -->
+            <VerticalStackLayout Spacing="10" Margin="0,0,0,20">
+                <Label Text="Contact &amp; Support" FontSize="16" FontAttributes="Bold" TextColor="#1E293B" />
+                <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="15">
+                    <HorizontalStackLayout Spacing="10">
+                        <Image Source="email_icon.png" WidthRequest="18" HeightRequest="18" VerticalOptions="Center"/>
+                        <Label Text="support@eletrack.app" FontSize="14" TextColor="#1E293B" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- Footer Text -->
+            <VerticalStackLayout Spacing="2" HorizontalOptions="Center" Margin="0,10,0,30">
+                <Label Text="© 2026 EleTrack. All rights reserved." FontSize="11" TextColor="#94A3B8" HorizontalOptions="Center"/>
+                <Label Text="Made for students, by students." FontSize="11" TextColor="#94A3B8" HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

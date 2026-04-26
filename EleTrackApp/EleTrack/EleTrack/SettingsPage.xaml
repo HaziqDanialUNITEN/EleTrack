@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EleTrack.SettingsPage"
+             BackgroundColor="#FAFAFA">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Header Section -->
+            <VerticalStackLayout>
+                <Label Text="Settings" 
+                       FontSize="26" 
+                       FontAttributes="Bold" 
+                       TextColor="#1E293B" />
+                <Label Text="Manage housemates and preferences" 
+                       FontSize="14" 
+                       TextColor="#64748B" />
+            </VerticalStackLayout>
+
+            <!-- Housemates Header & Add Button -->
+            <Grid ColumnDefinitions="*, Auto" Margin="0,10,0,0">
+                <Label Grid.Column="0" Text="Housemates" FontSize="18" FontAttributes="Bold" TextColor="#1E293B" VerticalOptions="Center"/>
+                <Button Grid.Column="1" 
+                        Text="Add" 
+                        ImageSource="add_user_icon_white.png" 
+                        ContentLayout="Left, 5"
+                        BackgroundColor="#0AA67A" 
+                        TextColor="White" 
+                        FontAttributes="Bold" 
+                        CornerRadius="8" 
+                        HeightRequest="36" 
+                        Padding="12,0"/>
+            </Grid>
+
+            <!-- Housemates List -->
+            <VerticalStackLayout Spacing="10">
+
+                <!-- Housemate 1 -->
+                <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="15">
+                    <Grid ColumnDefinitions="*, Auto, Auto">
+                        <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                            <Label Text="Ahmad" FontSize="16" FontAttributes="Bold" TextColor="#1E293B" />
+                            <Label Text="Modifier: 1×" FontSize="13" TextColor="#64748B" />
+                        </VerticalStackLayout>
+                        <Image Grid.Column="1" Source="edit_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center" Margin="0,0,15,0"/>
+                        <Image Grid.Column="2" Source="delete_icon_red.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <!-- Housemate 2 -->
+                <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="15">
+                    <Grid ColumnDefinitions="*, Auto, Auto">
+                        <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                            <Label Text="Sarah" FontSize="16" FontAttributes="Bold" TextColor="#1E293B" />
+                            <Label Text="Modifier: 0.8×" FontSize="13" TextColor="#64748B" />
+                        </VerticalStackLayout>
+                        <Image Grid.Column="1" Source="edit_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center" Margin="0,0,15,0"/>
+                        <Image Grid.Column="2" Source="delete_icon_red.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <!-- Housemate 3 -->
+                <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="15">
+                    <Grid ColumnDefinitions="*, Auto, Auto">
+                        <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                            <Label Text="Wei Ming" FontSize="16" FontAttributes="Bold" TextColor="#1E293B" />
+                            <Label Text="Modifier: 1.5×" FontSize="13" TextColor="#64748B" />
+                        </VerticalStackLayout>
+                        <Image Grid.Column="1" Source="edit_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center" Margin="0,0,15,0"/>
+                        <Image Grid.Column="2" Source="delete_icon_red.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <!-- Housemate 4 -->
+                <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="15">
+                    <Grid ColumnDefinitions="*, Auto, Auto">
+                        <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                            <Label Text="Priya" FontSize="16" FontAttributes="Bold" TextColor="#1E293B" />
+                            <Label Text="Modifier: 1×" FontSize="13" TextColor="#64748B" />
+                        </VerticalStackLayout>
+                        <Image Grid.Column="1" Source="edit_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center" Margin="0,0,15,0"/>
+                        <Image Grid.Column="2" Source="delete_icon_red.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+            </VerticalStackLayout>
+
+            <!-- Usage Modifiers Info Card -->
+            <Border BackgroundColor="#EFF6FF" 
+                    Stroke="#BFDBFE"
+                    StrokeThickness="1" 
+                    StrokeShape="RoundRectangle 12"
+                    Padding="20"
+                    Margin="0,10,0,0">
+                <VerticalStackLayout Spacing="10">
+                    <HorizontalStackLayout Spacing="8">
+                        <Image Source="info_icon_blue.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                        <Label Text="Usage Modifiers" FontSize="16" FontAttributes="Bold" TextColor="#1E3A8A" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+
+                    <Label Text="Modifiers adjust each person's share based on their electricity usage habits:" 
+                           FontSize="13" 
+                           TextColor="#1D4ED8" 
+                           LineBreakMode="WordWrap"/>
+
+                    <VerticalStackLayout Spacing="4" Margin="10,5,0,0">
+                        <Label Text="• 1.0 = Standard usage" FontSize="13" TextColor="#1D4ED8"/>
+                        <Label Text="• 1.5 = 50% higher (e.g., gaming PC, personal fridge)" FontSize="13" TextColor="#1D4ED8"/>
+                        <Label Text="• 0.8 = 20% lower (e.g., travels often, minimal usage)" FontSize="13" TextColor="#1D4ED8"/>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- About EleTrack Button/Card -->
+            <Border BackgroundColor="White" 
+                    Stroke="#E2E8F0"
+                    StrokeThickness="1" 
+                    StrokeShape="RoundRectangle 12"
+                    Padding="20"
+                    Margin="0,10,0,20">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnAboutTapped" />
+                </Border.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto, *, Auto">
+                    <Image Grid.Column="0" Source="info_icon_blue.png" WidthRequest="24" HeightRequest="24" VerticalOptions="Center" Margin="0,0,15,0"/>
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                        <Label Text="About EleTrack" FontSize="16" TextColor="#1E293B" />
+                        <Label Text="App info and version" FontSize="13" TextColor="#64748B" />
+                    </VerticalStackLayout>
+                    <Image Grid.Column="2" Source="chevron_right_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center"/>
+                </Grid>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

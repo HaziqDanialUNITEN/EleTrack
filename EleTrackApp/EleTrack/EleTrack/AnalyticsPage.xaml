@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EleTrack.AnalyticsPage"
+             BackgroundColor="#FAFAFA">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="25">
+
+            <!-- Header Section -->
+            <VerticalStackLayout>
+                <Label Text="Analytics" 
+                       FontSize="26" 
+                       FontAttributes="Bold" 
+                       TextColor="#1E293B" />
+                <Label Text="Track your electricity consumption" 
+                       FontSize="14" 
+                       TextColor="#64748B" />
+            </VerticalStackLayout>
+
+            <!-- Segmented Control (Daily / Weekly) -->
+            <Border BackgroundColor="#F1F5F9" 
+                    StrokeThickness="0" 
+                    StrokeShape="RoundRectangle 25" 
+                    Padding="4" 
+                    HeightRequest="50">
+                <Grid ColumnDefinitions="*, *">
+                    <!-- Daily Tab -->
+                    <Border x:Name="DailyTabBorder" 
+                            BackgroundColor="White" 
+                            StrokeThickness="0" 
+                            StrokeShape="RoundRectangle 21" 
+                            Margin="0,0,2,0">
+                        <Border.Shadow>
+                            <Shadow Brush="Black" Offset="0,2" Radius="4" Opacity="0.05" />
+                        </Border.Shadow>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnDailyTapped" />
+                        </Border.GestureRecognizers>
+                        <Label x:Name="DailyTabLabel" 
+                               Text="Daily" 
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Center" 
+                               TextColor="#1E293B" 
+                               FontSize="14"
+                               FontAttributes="Bold"/>
+                    </Border>
+
+                    <!-- Weekly Tab -->
+                    <Border x:Name="WeeklyTabBorder" 
+                            Grid.Column="1" 
+                            BackgroundColor="Transparent" 
+                            StrokeThickness="0" 
+                            StrokeShape="RoundRectangle 21" 
+                            Margin="2,0,0,0">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnWeeklyTapped" />
+                        </Border.GestureRecognizers>
+                        <Label x:Name="WeeklyTabLabel" 
+                               Text="Weekly" 
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Center" 
+                               TextColor="#64748B" 
+                               FontSize="14"
+                               FontAttributes="None"/>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- Chart Card -->
+            <Border BackgroundColor="White" 
+                    Stroke="#E2E8F0"
+                    StrokeThickness="1" 
+                    StrokeShape="RoundRectangle 12"
+                    Padding="20">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,4" Radius="10" Opacity="0.02" />
+                </Border.Shadow>
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Consumption Trend" FontSize="16" TextColor="#334155" />
+
+                    <!-- Native MAUI Graphics View for the Chart -->
+                    <GraphicsView x:Name="ChartGraphicsView" 
+                                  HeightRequest="220" 
+                                  HorizontalOptions="FillAndExpand" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Peak and Lowest Day Stats -->
+            <Grid ColumnDefinitions="*, *" ColumnSpacing="15">
+
+                <!-- Peak Day -->
+                <Border Grid.Column="0" 
+                        BackgroundColor="White" 
+                        Stroke="#E2E8F0"
+                        StrokeThickness="1" 
+                        StrokeShape="RoundRectangle 12"
+                        Padding="15">
+                    <Border.Shadow>
+                        <Shadow Brush="Black" Offset="0,2" Radius="8" Opacity="0.02" />
+                    </Border.Shadow>
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Peak Day" FontSize="12" TextColor="#94A3B8" />
+                        <Label x:Name="PeakDayLabel" Text="Saturday" FontSize="20" FontAttributes="Bold" TextColor="#1E293B" />
+                        <Label x:Name="PeakValueLabel" Text="RM 5.20" FontSize="13" TextColor="#10B981" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Lowest Day -->
+                <Border Grid.Column="1" 
+                        BackgroundColor="White" 
+                        Stroke="#E2E8F0"
+                        StrokeThickness="1" 
+                        StrokeShape="RoundRectangle 12"
+                        Padding="15">
+                    <Border.Shadow>
+                        <Shadow Brush="Black" Offset="0,2" Radius="8" Opacity="0.02" />
+                    </Border.Shadow>
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Lowest Day" FontSize="12" TextColor="#94A3B8" />
+                        <Label x:Name="LowestDayLabel" Text="Wednesday" FontSize="20" FontAttributes="Bold" TextColor="#1E293B" />
+                        <Label x:Name="LowestValueLabel" Text="RM 2.10" FontSize="13" TextColor="#3B82F6" />
+                    </VerticalStackLayout>
+                </Border>
+
+            </Grid>
+
+            <!-- Insight Card -->
+            <Border BackgroundColor="#ECFDF5" 
+                    Stroke="#A7F3D0"
+                    StrokeThickness="1" 
+                    StrokeShape="RoundRectangle 12"
+                    Padding="15">
+                <VerticalStackLayout Spacing="8">
+                    <HorizontalStackLayout Spacing="8">
+                        <!-- Use your lightbulb_icon.png here, or standard emoji -->
+                        <Image Source="lightbulb_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                        <Label Text="Insight" FontSize="16" FontAttributes="Bold" TextColor="#059669" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <Label x:Name="InsightTextLabel" 
+                           Text="Your usage spikes on weekends. Consider monitoring air conditioning and gaming device usage during this time." 
+                           FontSize="13" 
+                           TextColor="#059669" 
+                           LineBreakMode="WordWrap"/>
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
