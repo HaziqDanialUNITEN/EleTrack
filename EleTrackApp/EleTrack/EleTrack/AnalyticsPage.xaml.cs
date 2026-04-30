@@ -8,6 +8,10 @@ public partial class AnalyticsPage : ContentPage
     private readonly FirebaseService _firebaseService;
     private bool _isWeeklyView = false;
 
+    // NEW: Variables to track the currently selected time window
+    private DateTime _currentFilterDate = DateTime.Today;
+    private List<MeterReading> _allReadingsCache = new List<MeterReading>();
+
     public AnalyticsPage()
     {
         InitializeComponent();
@@ -24,11 +28,15 @@ public partial class AnalyticsPage : ContentPage
         await LoadChartData();
     }
 
+    // ==========================================
+    // UI NAVIGATION EVENTS
+    // ==========================================
+
     private void OnDailyTapped(object sender, TappedEventArgs e)
     {
         _isWeeklyView = false;
+        _currentFilterDate = DateTime.Today; // Reset anchor to today
 
-        // Simple UI property changes from user interaction are already on MainThread
         DailyTabBorder.BackgroundColor = Colors.White;
         DailyTabLabel.FontAttributes = FontAttributes.Bold;
         DailyTabLabel.TextColor = Color.FromArgb("#1E293B");
@@ -45,6 +53,7 @@ public partial class AnalyticsPage : ContentPage
     private void OnWeeklyTapped(object sender, TappedEventArgs e)
     {
         _isWeeklyView = true;
+        _currentFilterDate = DateTime.Today; // Reset anchor to today
 
         WeeklyTabBorder.BackgroundColor = Colors.White;
         WeeklyTabLabel.FontAttributes = FontAttributes.Bold;
@@ -59,42 +68,98 @@ public partial class AnalyticsPage : ContentPage
         _ = LoadChartData();
     }
 
+    private void OnPreviousDateTapped(object sender, EventArgs e)
+    {
+        // Daily moves back 1 week, Weekly moves back 4 weeks
+        _currentFilterDate = _currentFilterDate.AddDays(_isWeeklyView ? -28 : -7);
+        _ = LoadChartData();
+    }
+
+    private void OnNextDateTapped(object sender, EventArgs e)
+    {
+        // Daily moves forward 1 week, Weekly moves forward 4 weeks
+        _currentFilterDate = _currentFilterDate.AddDays(_isWeeklyView ? 28 : 7);
+        _ = LoadChartData();
+    }
+
+    // ==========================================
+    // CHART DATA LOGIC
+    // ==========================================
+
     private async Task LoadChartData()
     {
         try
         {
             var allReadings = await _firebaseService.GetReadingsAsync();
+            _allReadingsCache = allReadings?.ToList() ?? new List<MeterReading>();
 
-            // Background thread is fine for calculations
-            if (allReadings == null || allReadings.Count == 0) return;
+            if (_allReadingsCache.Count == 0)
+            {
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    CurrentPeriodLabel.Text = "-";
+                    _chartDrawable.Data = Array.Empty<float>();
+                    _chartDrawable.Labels = Array.Empty<string>();
+                    ChartGraphicsView.Invalidate();
 
-            var readings = allReadings.OrderBy(r => r.Date).ToList();
+                    PeakDayLabel.Text = "-";
+                    PeakValueLabel.Text = "RM 0.00";
+                    LowestDayLabel.Text = "-";
+                    LowestValueLabel.Text = "RM 0.00";
+                    InsightTextLabel.Text = "Keep logging readings to generate insights.";
+                });
+                return;
+            }
 
             List<float> dataPoints = new List<float>();
             List<string> labels = new List<string>();
 
-            if (!_isWeeklyView) // DAILY
+            // Find the Monday of the currently selected date
+            int diffToMonday = (7 + (_currentFilterDate.DayOfWeek - DayOfWeek.Monday)) % 7;
+            DateTime currentWeekStart = _currentFilterDate.AddDays(-1 * diffToMonday).Date;
+
+            if (!_isWeeklyView)
             {
-                var last7 = readings.TakeLast(7).ToList();
-                foreach (var r in last7)
+                // DAILY MODE: Plot exact 7 days (Mon-Sun)
+                DateTime weekEnd = currentWeekStart.AddDays(6).Date;
+
+                MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    dataPoints.Add((float)r.Consumed);
-                    labels.Add(r.Date.ToString("ddd"));
+                    CurrentPeriodLabel.Text = $"{currentWeekStart:MMM d} - {weekEnd:MMM d}";
+                });
+
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime day = currentWeekStart.AddDays(i);
+                    float sum = (float)_allReadingsCache.Where(r => r.LocalDate.Date == day).Sum(r => r.Consumed);
+
+                    dataPoints.Add(sum);
+                    labels.Add(day.ToString("ddd"));
                 }
             }
-            else // WEEKLY
+            else
             {
-                int weekNum = 1;
-                for (int i = 0; i < readings.Count; i += 7)
+                // WEEKLY MODE: Plot exact 4 weeks, ending on current week
+                DateTime week1Start = currentWeekStart.AddDays(-21); // Go back 3 weeks to get a 4-week window
+                DateTime week4End = currentWeekStart.AddDays(6).Date;
+
+                MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    var chunk = readings.Skip(i).Take(7);
-                    dataPoints.Add((float)chunk.Sum(c => c.Consumed));
-                    labels.Add($"Week {weekNum}");
-                    weekNum++;
+                    CurrentPeriodLabel.Text = $"{week1Start:MMM d} - {week4End:MMM d}";
+                });
+
+                for (int i = 0; i < 4; i++)
+                {
+                    DateTime startOfWeek = week1Start.AddDays(i * 7);
+                    DateTime endOfWeek = startOfWeek.AddDays(6);
+
+                    float sum = (float)_allReadingsCache.Where(r => r.LocalDate.Date >= startOfWeek && r.LocalDate.Date <= endOfWeek).Sum(r => r.Consumed);
+
+                    dataPoints.Add(sum);
+                    labels.Add(startOfWeek.ToString("MMM d")); // Display the date the week started rather than "Week X"
                 }
             }
 
-            // CRITICAL FIX: Push the UI updates back to the Main Thread
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 if (dataPoints.Count > 0)
@@ -106,7 +171,7 @@ public partial class AnalyticsPage : ContentPage
                     _chartDrawable.YAxisMax = maxVal + (maxVal * 0.2f);
                     if (_chartDrawable.YAxisMax < 5) _chartDrawable.YAxisMax = 5;
 
-                    ChartGraphicsView.Invalidate(); // Crucial that this happens on UI thread
+                    ChartGraphicsView.Invalidate();
 
                     int peakIndex = dataPoints.IndexOf(maxVal);
                     int lowestIndex = dataPoints.IndexOf(dataPoints.Min());
@@ -117,7 +182,7 @@ public partial class AnalyticsPage : ContentPage
                     LowestValueLabel.Text = $"RM {dataPoints[lowestIndex]:F2}";
 
                     InsightTextLabel.Text = _isWeeklyView
-                        ? $"Your highest consumption was during {labels[peakIndex]}. Monitor appliance usage during this period."
+                        ? $"Your highest consumption was during the week of {labels[peakIndex]}. Monitor appliance usage during this period."
                         : $"Your usage peaked on {labels[peakIndex]}. Consider tracking heavy appliances on this day.";
                 }
             });
@@ -135,14 +200,16 @@ public class LineChartDrawable : IDrawable
     public string[] Labels { get; set; } = Array.Empty<string>();
     public float YAxisMax { get; set; } = 10f;
 
+    public string YAxisLabel { get; set; } = "Credit Usage (RM)";
+
     public void Draw(ICanvas canvas, RectF dirtyRect)
     {
         if (Data.Length == 0) return;
 
-        float paddingLeft = 35;
+        float paddingLeft = 40;
         float paddingBottom = 30;
-        float paddingTop = 10;
-        float paddingRight = 15;
+        float paddingTop = 30;
+        float paddingRight = 45;
 
         float width = dirtyRect.Width - paddingLeft - paddingRight;
         float height = dirtyRect.Height - paddingTop - paddingBottom;
@@ -150,6 +217,11 @@ public class LineChartDrawable : IDrawable
         Color lineColor = Color.FromArgb("#10B981");
         Color gridColor = Color.FromArgb("#E2E8F0");
         Color axisTextColor = Color.FromArgb("#64748B");
+        Color axisLabelColor = Color.FromArgb("#334155");
+
+        canvas.FontColor = axisLabelColor;
+        canvas.FontSize = 12;
+        canvas.DrawString(YAxisLabel, paddingLeft - 10, paddingTop - 25, 150, 20, HorizontalAlignment.Left, VerticalAlignment.Center);
 
         int yAxisSteps = 4;
         for (int i = 0; i <= yAxisSteps; i++)
@@ -164,7 +236,7 @@ public class LineChartDrawable : IDrawable
 
             float val = YAxisMax * yRatio;
             canvas.FontColor = axisTextColor;
-            canvas.FontSize = 12;
+            canvas.FontSize = 11;
             canvas.DrawString(val.ToString("0"), 0, yPos - 8, paddingLeft - 5, 16, HorizontalAlignment.Right, VerticalAlignment.Center);
         }
 
@@ -187,7 +259,7 @@ public class LineChartDrawable : IDrawable
             if (i < Labels.Length)
             {
                 canvas.FontColor = axisTextColor;
-                canvas.FontSize = 12;
+                canvas.FontSize = 11;
                 canvas.DrawString(Labels[i], xPos - 30, dirtyRect.Height - paddingBottom + 8, 60, 20, HorizontalAlignment.Center, VerticalAlignment.Top);
             }
         }

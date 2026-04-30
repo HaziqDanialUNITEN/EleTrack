@@ -32,6 +32,25 @@
                 </Grid>
             </Border>
 
+            <!-- DATE NAVIGATOR -->
+            <HorizontalStackLayout x:Name="DateNavigatorLayout" HorizontalOptions="Center" Spacing="20" Margin="0,-5,0,-5">
+                <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 8" WidthRequest="36" HeightRequest="36">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnPreviousDateTapped" />
+                    </Border.GestureRecognizers>
+                    <Image Source="back_arrow_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" HorizontalOptions="Center" />
+                </Border>
+
+                <Label x:Name="CurrentPeriodLabel" Text="This Week" FontSize="15" FontAttributes="Bold" TextColor="#1E293B" VerticalOptions="Center" WidthRequest="160" HorizontalTextAlignment="Center"/>
+
+                <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 8" WidthRequest="36" HeightRequest="36">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnNextDateTapped" />
+                    </Border.GestureRecognizers>
+                    <Image Source="chevron_right_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" HorizontalOptions="Center" />
+                </Border>
+            </HorizontalStackLayout>
+
             <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="20">
                 <Border.Shadow>
                     <Shadow Brush="Black" Offset="0,4" Radius="10" Opacity="0.02" />

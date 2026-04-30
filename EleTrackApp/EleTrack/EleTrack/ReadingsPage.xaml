@@ -37,6 +37,19 @@
                             </Border>
                         </VerticalStackLayout>
 
+                        <!-- DATE & TIME SECTION -->
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="Reading Date &amp; Time" FontSize="13" TextColor="#1E293B" />
+                            <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+                                <Border BackgroundColor="#F1F5F9" StrokeThickness="0" StrokeShape="RoundRectangle 8" HeightRequest="45" Padding="10,0">
+                                    <DatePicker x:Name="ReadingDatePicker" TextColor="#1E293B" BackgroundColor="Transparent" VerticalOptions="Center" />
+                                </Border>
+                                <Border Grid.Column="1" BackgroundColor="#F1F5F9" StrokeThickness="0" StrokeShape="RoundRectangle 8" HeightRequest="45" Padding="10,0">
+                                    <TimePicker x:Name="ReadingTimePicker" TextColor="#1E293B" BackgroundColor="Transparent" VerticalOptions="Center" />
+                                </Border>
+                            </Grid>
+                        </VerticalStackLayout>
+
                         <!-- PHOTO SECTION -->
                         <VerticalStackLayout Spacing="8">
                             <Label Text="Meter Photo (Optional)" FontSize="13" TextColor="#1E293B" />
@@ -72,10 +85,65 @@
                 </Border>
 
                 <!-- Reading History Section Title -->
-                <Label Text="Reading History" FontSize="18" FontAttributes="Bold" TextColor="#1E293B" Margin="0,5,0,-10"/>
+                <Label Text="Reading History" FontSize="18" FontAttributes="Bold" TextColor="#1E293B" Margin="0,5,0,-5"/>
+
+                <!-- FILTER TABS -->
+                <Border BackgroundColor="#F1F5F9" StrokeThickness="0" StrokeShape="RoundRectangle 25" Padding="4" HeightRequest="50" Margin="0,0,0,5">
+                    <Grid ColumnDefinitions="*, *, *">
+                        <!-- Daily Tab -->
+                        <Border x:Name="DailyTabBorder" BackgroundColor="Transparent" StrokeThickness="0" StrokeShape="RoundRectangle 21" Margin="0,0,2,0">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnDailyFilterTapped" />
+                            </Border.GestureRecognizers>
+                            <Label x:Name="DailyTabLabel" Text="Daily" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#64748B" FontSize="14" FontAttributes="None"/>
+                        </Border>
+                        <!-- Weekly Tab (Default) -->
+                        <Border x:Name="WeeklyTabBorder" Grid.Column="1" BackgroundColor="White" StrokeThickness="0" StrokeShape="RoundRectangle 21" Margin="2,0,2,0">
+                            <Border.Shadow>
+                                <Shadow Brush="Black" Offset="0,2" Radius="4" Opacity="0.05" />
+                            </Border.Shadow>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnWeeklyFilterTapped" />
+                            </Border.GestureRecognizers>
+                            <Label x:Name="WeeklyTabLabel" Text="Weekly" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#1E293B" FontSize="14" FontAttributes="Bold"/>
+                        </Border>
+                        <!-- All Tab -->
+                        <Border x:Name="AllTabBorder" Grid.Column="2" BackgroundColor="Transparent" StrokeThickness="0" StrokeShape="RoundRectangle 21" Margin="2,0,0,0">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnAllFilterTapped" />
+                            </Border.GestureRecognizers>
+                            <Label x:Name="AllTabLabel" Text="All" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#64748B" FontSize="14" FontAttributes="None"/>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <!-- DATE NAVIGATOR -->
+                <HorizontalStackLayout x:Name="DateNavigatorLayout" HorizontalOptions="Center" Spacing="20" Margin="0,0,0,10">
+                    <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 8" WidthRequest="36" HeightRequest="36">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnPreviousDateTapped" />
+                        </Border.GestureRecognizers>
+                        <Image Source="back_arrow_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" HorizontalOptions="Center" />
+                    </Border>
+
+                    <Label x:Name="CurrentFilterDateLabel" Text="This Week" FontSize="15" FontAttributes="Bold" TextColor="#1E293B" VerticalOptions="Center" WidthRequest="150" HorizontalTextAlignment="Center"/>
+
+                    <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 8" WidthRequest="36" HeightRequest="36">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnNextDateTapped" />
+                        </Border.GestureRecognizers>
+                        <Image Source="chevron_right_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" HorizontalOptions="Center" />
+                    </Border>
+                </HorizontalStackLayout>
 
                 <!-- Dynamic Reading History List -->
                 <CollectionView x:Name="ReadingsCollection">
+                    <CollectionView.EmptyView>
+                        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="0,30,0,30" Spacing="10">
+                            <Image Source="clock_icon.png" WidthRequest="40" HeightRequest="40" Opacity="0.3" HorizontalOptions="Center"/>
+                            <Label Text="No readings found for this period." TextColor="#94A3B8" FontSize="14" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </CollectionView.EmptyView>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="20" Margin="0,0,0,15">

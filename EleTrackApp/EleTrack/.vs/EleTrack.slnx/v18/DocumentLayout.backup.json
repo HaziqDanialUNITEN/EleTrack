@@ -3,72 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\splitpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\splitpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\splitpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\splitpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\readingspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\readingspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\readingspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\readingspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\services\\firebaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\services\\firebaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\eletrack.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\eletrack.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\platforms\\android\\androidmanifest.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\platforms\\android\\androidmanifest.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\settingspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\settingspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\aboutpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\aboutpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\settingspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\settingspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\analyticspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\analyticspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\analyticspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\analyticspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\aboutpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\aboutpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\readingspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\readingspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\readingspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\readingspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\splitpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\splitpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\splitpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\splitpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\settingspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\settingspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\services\\firebaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\services\\firebaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|c:\\users\\haziq\\desktop\\uniten\\2024-2025 s1\\cseb1123\\github\\eletrack\\eletrackapp\\eletrack\\eletrack\\settingspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F9CEB9C-5AA2-10C2-0E44-6369DE936ADB}|EleTrack\\EleTrack.csproj|solutionrelative:eletrack\\settingspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -78,45 +50,59 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SettingsPage.xaml",
-              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\SettingsPage.xaml",
-              "RelativeDocumentMoniker": "EleTrack\\SettingsPage.xaml",
-              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\SettingsPage.xaml",
-              "RelativeToolTip": "EleTrack\\SettingsPage.xaml",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAIwF8AAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-04-26T10:49:55.868Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SplitPage.xaml",
-              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\SplitPage.xaml",
-              "RelativeDocumentMoniker": "EleTrack\\SplitPage.xaml",
-              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\SplitPage.xaml",
-              "RelativeToolTip": "EleTrack\\SplitPage.xaml",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAIwHUAAAAOAAAAAAAAAA==",
+              "Title": "AnalyticsPage.xaml",
+              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\AnalyticsPage.xaml",
+              "RelativeDocumentMoniker": "EleTrack\\AnalyticsPage.xaml",
+              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\AnalyticsPage.xaml",
+              "RelativeToolTip": "EleTrack\\AnalyticsPage.xaml",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAmwGIAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-04-26T09:51:14.406Z",
+              "WhenOpened": "2026-04-27T02:25:55.209Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "AndroidManifest.xml",
-              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\Platforms\\Android\\AndroidManifest.xml",
-              "RelativeDocumentMoniker": "EleTrack\\Platforms\\Android\\AndroidManifest.xml",
-              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\Platforms\\Android\\AndroidManifest.xml",
-              "RelativeToolTip": "EleTrack\\Platforms\\Android\\AndroidManifest.xml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
-              "WhenOpened": "2026-04-26T15:14:56.083Z"
+              "Title": "FirebaseService.cs",
+              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\Services\\FirebaseService.cs",
+              "RelativeDocumentMoniker": "EleTrack\\Services\\FirebaseService.cs",
+              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\Services\\FirebaseService.cs",
+              "RelativeToolTip": "EleTrack\\Services\\FirebaseService.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAUwDQAAAB1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-27T01:20:37.063Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SplitPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\SplitPage.xaml.cs",
+              "RelativeDocumentMoniker": "EleTrack\\SplitPage.xaml.cs",
+              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\SplitPage.xaml.cs",
+              "RelativeToolTip": "EleTrack\\SplitPage.xaml.cs",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAkwJcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-27T01:17:03.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SettingsPage.xaml",
+              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\SettingsPage.xaml",
+              "RelativeDocumentMoniker": "EleTrack\\SettingsPage.xaml",
+              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\SettingsPage.xaml",
+              "RelativeToolTip": "EleTrack\\SettingsPage.xaml",
+              "ViewState": "AgIAADkAAAAAAAAAAAArwEQAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-27T01:34:12.622Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -126,173 +112,75 @@
               "RelativeDocumentMoniker": "EleTrack\\ReadingsPage.xaml.cs",
               "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\ReadingsPage.xaml.cs",
               "RelativeToolTip": "EleTrack\\ReadingsPage.xaml.cs",
-              "ViewState": "AgIAAJ4AAAAAAAAAAAAIwLIAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAADABAAAAAAAAAAAAwDoBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T09:37:41.765Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "FirebaseService.cs",
-              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\Services\\FirebaseService.cs",
-              "RelativeDocumentMoniker": "EleTrack\\Services\\FirebaseService.cs",
-              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\Services\\FirebaseService.cs",
-              "RelativeToolTip": "EleTrack\\Services\\FirebaseService.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAqwDQAAAB1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T13:59:43.696Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainPage.xaml",
-              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\MainPage.xaml",
-              "RelativeDocumentMoniker": "EleTrack\\MainPage.xaml",
-              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\MainPage.xaml",
-              "RelativeToolTip": "EleTrack\\MainPage.xaml",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAIwGgAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-04-26T08:43:48.961Z",
+              "WhenOpened": "2026-04-27T01:33:41.487Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SplitPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\SplitPage.xaml.cs",
-              "RelativeDocumentMoniker": "EleTrack\\SplitPage.xaml.cs",
-              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\SplitPage.xaml.cs",
-              "RelativeToolTip": "EleTrack\\SplitPage.xaml.cs",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAIwHoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T09:51:45.902Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ReadingsPage.xaml",
-              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\ReadingsPage.xaml",
-              "RelativeDocumentMoniker": "EleTrack\\ReadingsPage.xaml",
-              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\ReadingsPage.xaml",
-              "RelativeToolTip": "EleTrack\\ReadingsPage.xaml",
-              "ViewState": "AgIAABYAAAAAAAAAAAD4vyIAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-04-26T09:29:36.303Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "EleTrack.csproj",
-              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\EleTrack.csproj",
-              "RelativeDocumentMoniker": "EleTrack\\EleTrack.csproj",
-              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\EleTrack.csproj",
-              "RelativeToolTip": "EleTrack\\EleTrack.csproj",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAADEAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-04-13T23:05:14.958Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "AboutPage.xaml",
-              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\AboutPage.xaml",
-              "RelativeDocumentMoniker": "EleTrack\\AboutPage.xaml",
-              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\AboutPage.xaml",
-              "RelativeToolTip": "EleTrack\\AboutPage.xaml",
-              "ViewState": "AgIAACkAAAAAAAAAAAAnwDIAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-04-26T10:50:12.457Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "SettingsPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\SettingsPage.xaml.cs",
-              "RelativeDocumentMoniker": "EleTrack\\SettingsPage.xaml.cs",
-              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\SettingsPage.xaml.cs",
-              "RelativeToolTip": "EleTrack\\SettingsPage.xaml.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAowGEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T10:50:27.929Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "MainPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\MainPage.xaml.cs",
-              "RelativeDocumentMoniker": "EleTrack\\MainPage.xaml.cs",
-              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\MainPage.xaml.cs",
-              "RelativeToolTip": "EleTrack\\MainPage.xaml.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAowEMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T08:46:11.727Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
               "Title": "AnalyticsPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\AnalyticsPage.xaml.cs",
               "RelativeDocumentMoniker": "EleTrack\\AnalyticsPage.xaml.cs",
               "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\AnalyticsPage.xaml.cs",
               "RelativeToolTip": "EleTrack\\AnalyticsPage.xaml.cs",
-              "ViewState": "AgIAALYAAAAAAAAAAAAowNEAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAcBAAAAAAAAAAAmwBkBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T09:20:34.662Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "AnalyticsPage.xaml",
-              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\AnalyticsPage.xaml",
-              "RelativeDocumentMoniker": "EleTrack\\AnalyticsPage.xaml",
-              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\AnalyticsPage.xaml",
-              "RelativeToolTip": "EleTrack\\AnalyticsPage.xaml",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAYwE8AAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-04-26T09:20:20.127Z",
+              "WhenOpened": "2026-04-27T01:45:06.228Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "AboutPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\AboutPage.xaml.cs",
-              "RelativeDocumentMoniker": "EleTrack\\AboutPage.xaml.cs",
-              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\AboutPage.xaml.cs",
-              "RelativeToolTip": "EleTrack\\AboutPage.xaml.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAowDMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T10:51:00.74Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "AppShell.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\AppShell.xaml.cs",
-              "RelativeDocumentMoniker": "EleTrack\\AppShell.xaml.cs",
-              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\AppShell.xaml.cs",
-              "RelativeToolTip": "EleTrack\\AppShell.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T08:43:32.491Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "AppShell.xaml",
-              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\AppShell.xaml",
-              "RelativeDocumentMoniker": "EleTrack\\AppShell.xaml",
-              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\AppShell.xaml",
-              "RelativeToolTip": "EleTrack\\AppShell.xaml",
-              "ViewState": "AgIAAA0AAAAAAAAAAABBwCEAAAAcAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "ReadingsPage.xaml",
+              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\ReadingsPage.xaml",
+              "RelativeDocumentMoniker": "EleTrack\\ReadingsPage.xaml",
+              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\ReadingsPage.xaml",
+              "RelativeToolTip": "EleTrack\\ReadingsPage.xaml",
+              "ViewState": "AgIAABwAAAAAAAAAAAAjwCIAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-04-26T02:43:40.157Z"
+              "WhenOpened": "2026-04-27T01:33:18.256Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SplitPage.xaml",
+              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\SplitPage.xaml",
+              "RelativeDocumentMoniker": "EleTrack\\SplitPage.xaml",
+              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\SplitPage.xaml",
+              "RelativeToolTip": "EleTrack\\SplitPage.xaml",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAjwHYAAADaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-27T01:56:37.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MainPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\MainPage.xaml.cs",
+              "RelativeDocumentMoniker": "EleTrack\\MainPage.xaml.cs",
+              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\MainPage.xaml.cs",
+              "RelativeToolTip": "EleTrack\\MainPage.xaml.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAkwFIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-27T01:16:33.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "SettingsPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\SettingsPage.xaml.cs",
+              "RelativeDocumentMoniker": "EleTrack\\SettingsPage.xaml.cs",
+              "ToolTip": "C:\\Users\\haziq\\Desktop\\UNITEN\\2024-2025 S1\\CSEB1123\\Github\\EleTrack\\EleTrackApp\\EleTrack\\EleTrack\\SettingsPage.xaml.cs",
+              "RelativeToolTip": "EleTrack\\SettingsPage.xaml.cs",
+              "ViewState": "AgIAAJgAAAAAAAAAAAAowKQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-27T01:34:18.353Z",
+              "EditorCaption": ""
             }
           ]
         }

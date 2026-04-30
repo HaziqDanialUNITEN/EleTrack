@@ -5,8 +5,15 @@ namespace EleTrack;
 
 public partial class ReadingsPage : ContentPage
 {
+    private enum FilterMode { Daily, Weekly, All }
+
     private readonly FirebaseService _firebaseService;
     private string _currentPhotoPath = null;
+
+    // Caching properties for filters
+    private List<MeterReading> _allReadingsCache = new List<MeterReading>();
+    private FilterMode _currentFilterMode = FilterMode.Weekly;
+    private DateTime _selectedFilterDate = DateTime.Today;
 
     public ReadingsPage()
     {
@@ -19,6 +26,11 @@ public partial class ReadingsPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
+
+        // Ensure the pickers default to the current local date/time every time the page is opened
+        ReadingDatePicker.Date = DateTime.Today;
+        ReadingTimePicker.Time = DateTime.Now.TimeOfDay;
+
         await RefreshReadingsList();
     }
 
@@ -27,17 +39,134 @@ public partial class ReadingsPage : ContentPage
         try
         {
             var readings = await _firebaseService.GetReadingsAsync();
+            _allReadingsCache = readings?.ToList() ?? new List<MeterReading>();
 
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                ReadingsCollection.ItemsSource = readings;
-            });
+            ApplyFilter();
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error loading readings: {ex.Message}");
         }
     }
+
+    // ==========================================
+    // FILTERING LOGIC
+    // ==========================================
+
+    private void ApplyFilter()
+    {
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            if (_currentFilterMode == FilterMode.All)
+            {
+                DateNavigatorLayout.IsVisible = false;
+                ReadingsCollection.ItemsSource = _allReadingsCache;
+            }
+            else if (_currentFilterMode == FilterMode.Daily)
+            {
+                DateNavigatorLayout.IsVisible = true;
+
+                // Show "Today", "Yesterday", or the specific date
+                if (_selectedFilterDate.Date == DateTime.Today)
+                    CurrentFilterDateLabel.Text = "Today";
+                else if (_selectedFilterDate.Date == DateTime.Today.AddDays(-1))
+                    CurrentFilterDateLabel.Text = "Yesterday";
+                else
+                    CurrentFilterDateLabel.Text = _selectedFilterDate.ToString("MMM d, yyyy");
+
+                var filtered = _allReadingsCache.Where(r => r.LocalDate.Date == _selectedFilterDate.Date).ToList();
+                ReadingsCollection.ItemsSource = filtered;
+            }
+            else if (_currentFilterMode == FilterMode.Weekly)
+            {
+                DateNavigatorLayout.IsVisible = true;
+
+                // Calculate week start (Monday) and end (Sunday)
+                int diff = (7 + (_selectedFilterDate.DayOfWeek - DayOfWeek.Monday)) % 7;
+                DateTime weekStart = _selectedFilterDate.AddDays(-1 * diff).Date;
+                DateTime weekEnd = weekStart.AddDays(6).Date;
+
+                CurrentFilterDateLabel.Text = $"{weekStart:MMM d} - {weekEnd:MMM d}";
+
+                var filtered = _allReadingsCache.Where(r => r.LocalDate.Date >= weekStart && r.LocalDate.Date <= weekEnd).ToList();
+                ReadingsCollection.ItemsSource = filtered;
+            }
+        });
+    }
+
+    private void OnPreviousDateTapped(object sender, EventArgs e)
+    {
+        if (_currentFilterMode == FilterMode.Daily)
+            _selectedFilterDate = _selectedFilterDate.AddDays(-1);
+        else if (_currentFilterMode == FilterMode.Weekly)
+            _selectedFilterDate = _selectedFilterDate.AddDays(-7);
+
+        ApplyFilter();
+    }
+
+    private void OnNextDateTapped(object sender, EventArgs e)
+    {
+        if (_currentFilterMode == FilterMode.Daily)
+            _selectedFilterDate = _selectedFilterDate.AddDays(1);
+        else if (_currentFilterMode == FilterMode.Weekly)
+            _selectedFilterDate = _selectedFilterDate.AddDays(7);
+
+        ApplyFilter();
+    }
+
+    // ==========================================
+    // FILTER TAB UI UPDATES
+    // ==========================================
+
+    private void OnDailyFilterTapped(object sender, EventArgs e)
+    {
+        _currentFilterMode = FilterMode.Daily;
+        UpdateFilterTabUI(DailyTabBorder, DailyTabLabel);
+        ApplyFilter();
+    }
+
+    private void OnWeeklyFilterTapped(object sender, EventArgs e)
+    {
+        _currentFilterMode = FilterMode.Weekly;
+        UpdateFilterTabUI(WeeklyTabBorder, WeeklyTabLabel);
+        ApplyFilter();
+    }
+
+    private void OnAllFilterTapped(object sender, EventArgs e)
+    {
+        _currentFilterMode = FilterMode.All;
+        UpdateFilterTabUI(AllTabBorder, AllTabLabel);
+        ApplyFilter();
+    }
+
+    private void UpdateFilterTabUI(Border activeBorder, Label activeLabel)
+    {
+        // Reset all tabs to inactive styling
+        DailyTabBorder.BackgroundColor = Colors.Transparent;
+        DailyTabBorder.Shadow = null;
+        DailyTabLabel.FontAttributes = FontAttributes.None;
+        DailyTabLabel.TextColor = Color.FromArgb("#64748B");
+
+        WeeklyTabBorder.BackgroundColor = Colors.Transparent;
+        WeeklyTabBorder.Shadow = null;
+        WeeklyTabLabel.FontAttributes = FontAttributes.None;
+        WeeklyTabLabel.TextColor = Color.FromArgb("#64748B");
+
+        AllTabBorder.BackgroundColor = Colors.Transparent;
+        AllTabBorder.Shadow = null;
+        AllTabLabel.FontAttributes = FontAttributes.None;
+        AllTabLabel.TextColor = Color.FromArgb("#64748B");
+
+        // Apply active styling to the selected tab
+        activeBorder.BackgroundColor = Colors.White;
+        activeBorder.Shadow = new Shadow { Brush = Brush.Black, Offset = new Point(0, 2), Radius = 4, Opacity = 0.05f };
+        activeLabel.FontAttributes = FontAttributes.Bold;
+        activeLabel.TextColor = Color.FromArgb("#1E293B");
+    }
+
+    // ==========================================
+    // EXISTING PHOTO & SUBMIT LOGIC
+    // ==========================================
 
     private async void OnAttachPhotoTapped(object sender, TappedEventArgs e)
     {
@@ -98,7 +227,6 @@ public partial class ReadingsPage : ContentPage
         });
     }
 
-    // NEW: Handles tapping the square thumbnail in the history list
     private void OnViewPhotoTapped(object sender, TappedEventArgs e)
     {
         if (e.Parameter is string photoPath && !string.IsNullOrEmpty(photoPath))
@@ -111,7 +239,6 @@ public partial class ReadingsPage : ContentPage
         }
     }
 
-    // NEW: Closes the full-screen photo overlay
     private void OnCloseFullScreenPhotoTapped(object sender, TappedEventArgs e)
     {
         MainThread.BeginInvokeOnMainThread(() =>
@@ -131,13 +258,20 @@ public partial class ReadingsPage : ContentPage
 
         try
         {
+            DateTime selectedDate = (DateTime)ReadingDatePicker.Date;
+            TimeSpan selectedTime = (TimeSpan)ReadingTimePicker.Time;
+
+            DateTime selectedLocalTime = selectedDate + selectedTime;
+            DateTime utcDateTime = selectedLocalTime.ToUniversalTime();
+
             double consumed = 0;
             var pastReadings = await _firebaseService.GetReadingsAsync();
 
-            if (pastReadings != null && pastReadings.Count > 0)
+            var previousReading = pastReadings.FirstOrDefault(r => r.Date < utcDateTime);
+
+            if (previousReading != null)
             {
-                var lastReading = pastReadings[0];
-                consumed = lastReading.CreditValue - currentCredit;
+                consumed = previousReading.CreditValue - currentCredit;
                 if (consumed < 0) consumed = 0;
             }
 
@@ -145,7 +279,7 @@ public partial class ReadingsPage : ContentPage
             {
                 CreditValue = currentCredit,
                 Consumed = consumed,
-                Date = DateTime.UtcNow,
+                Date = utcDateTime,
                 SubmittedBy = "Me",
                 PhotoPath = _currentPhotoPath
             };
@@ -155,6 +289,8 @@ public partial class ReadingsPage : ContentPage
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 CreditEntry.Text = string.Empty;
+                ReadingDatePicker.Date = DateTime.Today;
+                ReadingTimePicker.Time = DateTime.Now.TimeOfDay;
                 _currentPhotoPath = null;
                 PhotoPreviewImage.Source = null;
                 PhotoPreviewContainer.IsVisible = false;

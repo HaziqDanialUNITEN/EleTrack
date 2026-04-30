@@ -24,19 +24,31 @@ public partial class SplitPage : ContentPage
     {
         try
         {
-            var bill = await _firebaseService.GetCurrentBillAsync();
             var housemates = await _firebaseService.GetHousematesAsync();
+            var readings = await _firebaseService.GetReadingsAsync();
 
-            if (housemates == null || housemates.Count == 0) return;
+            if (housemates == null || housemates.Count == 0)
+            {
+                // FIX: Explicitly reset the UI when housemates are wiped
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    TotalBillLabel.Text = "RM 0.00";
+                    SplitAmongLabel.Text = "Split among 0 housemates";
+                    PaymentProgressTextLabel.Text = "RM 0.00 / RM 0.00";
+                    PaidCountLabel.Text = "0 of 0 paid";
+                    PaymentProgressBar.Progress = 0;
+                    BindableLayout.SetItemsSource(SplitCollection, null);
+                });
+                return;
+            }
 
-            // 1. Calculate the base mathematical values
+            double totalConsumed = readings?.Sum(r => r.Consumed) ?? 0;
             double totalModifiers = housemates.Sum(h => h.Modifier);
-            double baseShare = (bill?.TotalConsumed ?? 0) / (totalModifiers > 0 ? totalModifiers : 1);
+            double baseShare = totalConsumed / (totalModifiers > 0 ? totalModifiers : 1);
 
             int paidCount = 0;
             double totalPaid = 0;
 
-            // 2. Assign dynamic amounts to each housemate
             foreach (var mate in housemates)
             {
                 mate.AmountDue = baseShare * mate.Modifier;
@@ -48,25 +60,23 @@ public partial class SplitPage : ContentPage
                 }
             }
 
-            // 3. Update the UI on the Main Thread
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                TotalBillLabel.Text = $"RM {bill?.TotalConsumed ?? 0:F2}";
+                TotalBillLabel.Text = $"RM {totalConsumed:F2}";
                 SplitAmongLabel.Text = $"Split among {housemates.Count} housemates";
 
-                PaymentProgressTextLabel.Text = $"RM {totalPaid:F2} / RM {bill?.TotalConsumed ?? 0:F2}";
+                PaymentProgressTextLabel.Text = $"RM {totalPaid:F2} / RM {totalConsumed:F2}";
                 PaidCountLabel.Text = $"{paidCount} of {housemates.Count} paid";
 
-                if (bill != null && bill.TotalConsumed > 0)
+                if (totalConsumed > 0)
                 {
-                    PaymentProgressBar.Progress = totalPaid / bill.TotalConsumed;
+                    PaymentProgressBar.Progress = totalPaid / totalConsumed;
                 }
                 else
                 {
                     PaymentProgressBar.Progress = 0;
                 }
 
-                // Bind the list to the VerticalStackLayout using BindableLayout
                 BindableLayout.SetItemsSource(SplitCollection, housemates);
             });
         }
@@ -80,17 +90,11 @@ public partial class SplitPage : ContentPage
     {
         try
         {
-            // Briefly hide the Share button so it isn't included in the final screenshot
             ShareButton.IsVisible = false;
-
-            // Wait a tiny bit for the UI layout to update and hide the button
             await Task.Delay(100);
 
-            // Capture the specific layout container (MainContent) instead of the entire screen
-            // This captures the full scrollable height and naturally ignores the Navigation/Tab bars!
             IScreenshotResult screenshot = await MainContent.CaptureAsync();
 
-            // Bring the button back immediately
             ShareButton.IsVisible = true;
 
             if (screenshot != null)
@@ -113,11 +117,36 @@ public partial class SplitPage : ContentPage
         }
         catch (Exception)
         {
-            // Restore button just in case an error occurs
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 ShareButton.IsVisible = true;
             });
+        }
+    }
+
+    // NEW: Toggles the Paid/Pending status and saves it to Firebase
+    private async void OnTogglePaidStatusTapped(object sender, TappedEventArgs e)
+    {
+        if (e.Parameter is Housemate housemate)
+        {
+            // Toggle the status string
+            housemate.Status = housemate.Status == "Paid" ? "Pending" : "Paid";
+
+            try
+            {
+                // Update specific housemate in database
+                await _firebaseService.UpdateHousemateAsync(housemate);
+
+                // Refresh the whole page to update math and progress bars
+                await LoadSplitData();
+            }
+            catch (Exception ex)
+            {
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    await DisplayAlert("Error", $"Could not update status: {ex.Message}", "OK");
+                });
+            }
         }
     }
 }

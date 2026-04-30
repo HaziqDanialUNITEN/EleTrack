@@ -52,6 +52,8 @@
 
             <Label Text="Individual Shares" FontSize="18" FontAttributes="Bold" TextColor="#1E293B" Margin="0,10,0,0"/>
 
+            <Label Text="Tap on a housemate's 'Pending' or 'Paid' status badge to toggle their payment status." FontSize="13" TextColor="#64748B" Margin="0,0,0,5"/>
+
             <!-- Dynamic Housemates Split List (Swapped to BindableLayout so full screenshot works properly) -->
             <VerticalStackLayout x:Name="SplitCollection">
                 <BindableLayout.ItemTemplate>
@@ -75,6 +77,9 @@
 
                                     <!-- Status Badge with DataTriggers -->
                                     <Border Grid.Column="2" BackgroundColor="#E2E8F0" StrokeThickness="0" StrokeShape="RoundRectangle 12" Padding="10,4" HorizontalOptions="End" VerticalOptions="Center">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnTogglePaidStatusTapped" CommandParameter="{Binding .}" />
+                                        </Border.GestureRecognizers>
                                         <Border.Triggers>
                                             <DataTrigger TargetType="Border" Binding="{Binding Status}" Value="Paid">
                                                 <Setter Property="BackgroundColor" Value="#059669" />

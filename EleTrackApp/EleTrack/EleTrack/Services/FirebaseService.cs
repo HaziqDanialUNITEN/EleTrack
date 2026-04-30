@@ -85,6 +85,15 @@ public class FirebaseService
             .PostAsync(housemate);
     }
 
+    // ADDED: Method to update an existing housemate's status
+    public async Task UpdateHousemateAsync(Housemate housemate)
+    {
+        await _firebaseClient
+            .Child("housemates")
+            .Child(housemate.Id)
+            .PutAsync(housemate);
+    }
+
     public async Task DeleteHousemateAsync(string id)
     {
         await _firebaseClient
@@ -99,17 +108,19 @@ public class FirebaseService
     {
         var readings = await _firebaseClient
             .Child("readings")
-            .OrderByKey()
-            .OnceAsync<MeterReading>();
+            .OnceAsync<MeterReading>(); // Removed the buggy OrderByKey()
 
         var list = new ObservableCollection<MeterReading>();
         if (readings != null)
         {
-            // Reverse to show the latest reading at the top of the list
-            foreach (var item in readings.Reverse())
+            // FIX: Ignore Firebase keys and sort strictly by actual Date (Newest first)
+            var sortedReadings = readings
+                .Select(item => { item.Object.Id = item.Key; return item.Object; })
+                .OrderByDescending(r => r.Date);
+
+            foreach (var item in sortedReadings)
             {
-                item.Object.Id = item.Key;
-                list.Add(item.Object);
+                list.Add(item);
             }
         }
         return list;
@@ -140,5 +151,15 @@ public class FirebaseService
         await _firebaseClient
             .Child("currentBill")
             .PutAsync(bill);
+    }
+
+    // --- SYSTEM RESET ---
+
+    public async Task ResetAllDataAsync()
+    {
+        // Wipe all primary collections from the database
+        await _firebaseClient.Child("housemates").DeleteAsync();
+        await _firebaseClient.Child("readings").DeleteAsync();
+        await _firebaseClient.Child("currentBill").DeleteAsync();
     }
 }

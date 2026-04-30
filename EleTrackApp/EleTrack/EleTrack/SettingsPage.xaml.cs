@@ -1,4 +1,5 @@
 using EleTrack.Services;
+using System.IO;
 
 namespace EleTrack;
 
@@ -26,7 +27,6 @@ public partial class SettingsPage : ContentPage
         {
             var housemates = await _firebaseService.GetHousematesAsync();
 
-            // CRITICAL FIX: Ensure CollectionView ItemsSource updates on the Main Thread
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 HousematesCollection.ItemsSource = housemates;
@@ -87,6 +87,79 @@ public partial class SettingsPage : ContentPage
             {
                 await _firebaseService.DeleteHousemateAsync(housemate.Id);
                 await RefreshHousematesList();
+            }
+        }
+    }
+
+    private async void OnSetInitialCreditTapped(object sender, TappedEventArgs e)
+    {
+        string creditStr = await DisplayPromptAsync("Initial Credit", "Enter the initial meter credit balance (e.g., after a fresh top-up):", keyboard: Keyboard.Numeric);
+        if (string.IsNullOrWhiteSpace(creditStr)) return;
+
+        if (double.TryParse(creditStr, out double initialCredit))
+        {
+            var newReading = new MeterReading
+            {
+                CreditValue = initialCredit,
+                Consumed = 0, // Baseline reading has 0 consumption
+                Date = DateTime.UtcNow,
+                SubmittedBy = "System (Initial)",
+                PhotoPath = null
+            };
+
+            await _firebaseService.AddReadingAsync(newReading);
+
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await DisplayAlert("Success", $"Initial baseline credit set to RM {initialCredit:F2}.", "OK");
+            });
+        }
+        else
+        {
+            await DisplayAlert("Invalid Input", "Please enter a valid numeric amount.", "OK");
+        }
+    }
+
+    private async void OnResetDataTapped(object sender, TappedEventArgs e)
+    {
+        bool confirm = await DisplayAlert("⚠️ WARNING", "This will permanently delete ALL housemates, meter readings, bills, and local photos. This action cannot be undone. Are you absolutely sure?", "Yes, Wipe Everything", "Cancel");
+
+        if (confirm)
+        {
+            try
+            {
+                // 1. Wipe Firebase Database
+                await _firebaseService.ResetAllDataAsync();
+
+                // 2. Wipe Local Cached Photos
+                string cacheDir = FileSystem.CacheDirectory;
+                var files = Directory.GetFiles(cacheDir);
+
+                foreach (var file in files)
+                {
+                    // Only delete image files so we don't accidentally break MAUI's internal caches
+                    if (file.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) ||
+                        file.EndsWith(".png", StringComparison.OrdinalIgnoreCase) ||
+                        file.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase))
+                    {
+                        try { File.Delete(file); } catch { /* Ignore if file is locked */ }
+                    }
+                }
+
+                // 3. Refresh UI
+                await RefreshHousematesList();
+
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    await DisplayAlert("Reset Complete", "All app data and photos have been successfully wiped.", "OK");
+                });
+            }
+            catch (Exception ex)
+            {
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    await DisplayAlert("Error", $"Could not reset data: {ex.Message}", "OK");
+                });
             }
         }
     }
